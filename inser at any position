@@ -1,0 +1,101 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<malloc.h>
+
+struct node
+{
+	int data;
+	struct node *next;
+}
+*head=NULL,*p,*t,*newnode;
+
+
+void create()
+{
+	int n,i,ele;
+	printf("no of elements in the elements:");
+	scanf("%d",&n);
+	
+	for(i=0;i<n;i++)
+	{
+		printf("enter the element");
+		scanf("%d",&ele);
+		newnode=(struct node*)malloc(sizeof(struct node));
+		newnode->data=ele;
+		newnode->next=NULL;
+		
+		if(head==NULL)
+		{
+			head=newnode;
+			p=head;
+		}
+		else
+		{
+			for(p=head;p->next!=NULL;p=p->next);
+			
+				p->next=newnode;
+				p=newnode;
+			
+		}
+	}
+}
+
+void display()
+{
+	if(head==NULL)
+	printf("the single linked list is empty");
+	else
+	{
+		for(p=head;p!=NULL;p=p->next)
+		printf("%d ->",p->data);
+	}
+}
+
+void insert_at_the_end()
+{
+	int ele;
+	printf("enter the element");
+	scanf("%d",&ele);
+	new node = (struct node*)malloc(sizeof(struct node));
+	new node->data=ele;
+	for(p=head;p->next!=NULL;p=p->next);
+	p->next =new node;
+	p=new node;
+}
+
+void insert_at_anyposition()
+{
+	int ele;
+	printf("enter the element");
+	scanf("%d %d",&ele,&pos);
+	new node = (struct node*)malloc(sizeof(struct node));
+	new node ->data=ele;
+	for(i=1,p=head;i<pos;i++,p=p->next)
+		t=p;
+	t->next=new node;
+	new node->next=p;
+	p=new node;
+}
+	
+
+
+int main()
+{
+	int cho;
+	do
+	{
+		printf("\nmain menu");
+		printf("\n1.create\n2.display\n3.exit\n4.insert_at_the_end\n5.insert_at_anyposition");
+		printf("\nenter your choice");
+		scanf("%d",&cho);
+		switch(cho)
+		{
+			case 1: create();break;
+			case 2: display();break;
+			case 3: exit(0);break;
+			case 4: insert_at_the_end();break;
+			case 5: iser_at_anypositon()break;
+			default : printf("enter the choice between 1 to 3"); break;
+		}
+	}while(cho>=1&&cho<=4);
+}
